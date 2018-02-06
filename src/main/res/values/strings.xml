@@ -1,0 +1,68 @@
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">The 9th Companion</string>
+    <string-array name="menu_array">
+        <item>Deployment</item>
+        <item>Map pack</item>
+        <item>Secondary Objective</item>
+        <item>Reference</item>
+        <item>Victory points</item>
+        <item>Spell selection</item>
+    </string-array>
+    <string-array name="listPlayer">
+        <item>Player 1</item>
+        <item>Player 2</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="text_objective1">1. Hold the Ground</string>
+    <string name="text_objective2">2. Breakthrough</string>
+    <string name="text_objective3">3. Spoils of War</string>
+    <string name="text_objective4">4. King of the Hill</string>
+    <string name="text_objective5">5. Capture the Flags</string>
+    <string name="text_objective6">6. Secure Target</string>
+    <string name="random_button">Random</string>
+    <string name="text_deployment1">1. Frontline Clash</string>
+    <string name="text_deployment2">2. Dawn Assault</string>
+    <string name="text_deployment3">3. Counterthrust</string>
+    <string name="text_deployment4">4. Encircle</string>
+    <string name="text_deployment5">5. Refused Flank</string>
+    <string name="text_deployment6">6. Marching Columns</string>
+    <string name="text_map1">General</string>
+    <string name="text_map2">Counterthrust</string>
+    <string name="text_map3">Encircle</string>
+    <string name="text_map4">Frontline</string>
+    <string name="text_map5">Refused Flank</string>
+    <string name="textVp1">Game size</string>
+    <string name="editVp1"></string>
+    <string name="textVp2">Points earned by Army 1</string>
+    <string name="editVp2"></string>
+    <string name="textVp3">Points earned by Army 2</string>
+    <string name="editVp3"></string>
+    <string name="buttonVp">Calculate</string>
+    <string name="textVp4">0 - 0</string>
+    <string name="text_ref1">Close Combat - Score to hit</string>
+    <string name="text_ref2">Ranged Attack - Modifiers</string>
+    <string name="text_ref3">Score to wound</string>
+    <string name="text_ref4">Close Combat - Results</string>
+    <string name="text_btnDelSpell">Del</string>
+    <string name="text_btnAddSpell">Add</string>
+    <string name="spellPromptMessage">Enter the name of the spell</string>
+</resources>

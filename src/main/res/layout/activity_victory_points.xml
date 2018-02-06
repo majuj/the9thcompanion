@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.the9thage.android.the9thcompanion.VictoryPoints"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+
+    <TextView
+        android:id="@+id/textVp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textVp1"
+        android:layout_weight="2"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+    <EditText
+        android:id="@+id/editVp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/editVp1"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/textVp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textVp2"
+        android:layout_weight="2"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <EditText
+        android:id="@+id/editVp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/editVp2"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/textVp3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textVp3"
+        android:layout_weight="2"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <EditText
+        android:id="@+id/editVp3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/editVp3"
+        android:layout_weight="1"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/buttonVp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonVp"
+        android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:onClick="CalculateResult"/>
+
+    <TextView
+        android:id="@+id/textVp4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textVp4"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+</LinearLayout>
