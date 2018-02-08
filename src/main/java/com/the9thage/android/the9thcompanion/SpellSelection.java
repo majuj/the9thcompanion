@@ -7,21 +7,14 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.nio.channels.FileLockInterruptionException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,15 +30,18 @@ public class SpellSelection extends Activity {
     private List<String> player1Spells;
     private List<String> player2Spells;
     private File tempFile;
+    private String FILE_NAME = "T9CompanionSpells.txt";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spell_selection);
+
         // preparing list data
         prepareListData();
 
+        // displaying the lists
         prepareListDisplay();
 
         getActionBar().setTitle("Spell selection");
@@ -54,12 +50,16 @@ public class SpellSelection extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        System.out.println("We resume the activity");
         setContentView(R.layout.activity_spell_selection);
 
         // preparing list data
         prepareListData();
 
+        // displaying the lists
         prepareListDisplay();
+        System.out.println("player1Spells = " + player1Spells.toString());
+        System.out.println("player2Spells = " + player2Spells.toString());
 
         getActionBar().setTitle("Spell selection");
     }
@@ -71,13 +71,12 @@ public class SpellSelection extends Activity {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-
-        // Adding child data
         player1Spells = new ArrayList<String>();
         player2Spells = new ArrayList<String>();
 
         try{
-            if (tempFile != null) loadList();
+            System.out.println("We load the lists");
+            loadList();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,15 +104,12 @@ public class SpellSelection extends Activity {
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.listPlayer);
 
-
-        System.out.println("size of listDataChild = " + listDataChild.size());
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
-        System.out.println("listDataHeader = " + listDataHeader.toString());
-        System.out.println("listDataChild = " + listDataChild.toString());
 
+        /* No need to set the following listeners
         // Listview Group click listener
         expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
 
@@ -133,14 +129,14 @@ public class SpellSelection extends Activity {
             }
         });
 
-        // Listview Group collasped listenerc
+        // Listview Group collapsed listenerc
         expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
 
             }
-        });
+        });*/
 
         // Listview on child click listener
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -167,6 +163,13 @@ public class SpellSelection extends Activity {
 
     public void deleteSpell(List<String> listSpells, int spellPosition){
         listSpells.remove(spellPosition);
+
+        try {
+            saveList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         prepareListData();
         prepareListDisplay();
     }
@@ -181,8 +184,7 @@ public class SpellSelection extends Activity {
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.spell_prompts, null);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set prompts.xml to alertdialog builder
         alertDialogBuilder.setView(promptsView);
@@ -232,28 +234,22 @@ public class SpellSelection extends Activity {
 
     public void saveList() throws IOException {
 
-        File inputDir = this.getCacheDir(); // context being the Activity pointer
-        tempFile = File.createTempFile("T9Cspells", "txt", inputDir);
+        FileOutputStream fos = openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
 
-        PrintWriter pw = new PrintWriter(new FileOutputStream(tempFile));
         for (String spell : player1Spells)
-            pw.println("player1Spells_" + spell);
+            fos.write(new String("player1Spells_" + spell + "\n").getBytes());
         for (String spell : player2Spells)
-            pw.println("player2Spells_" + spell);
-        pw.close();
+            fos.write(new String("player2Spells_" + spell + "\n").getBytes());
+        fos.close();
     }
 
     public void loadList() throws IOException {
         try {
-            //File outputDir = this.getCacheDir(); // context being the Activity pointer
-            //File outputFile = File.createTempFile("T9Cspells", "txt", outputDir);
-            FileReader fileReader = new FileReader(tempFile);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(openFileInput(FILE_NAME)));
             String line;
             player1Spells.clear();
             player2Spells.clear();
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println("Line read = " + line);
                 if (line.contains("player1Spells_")){
                     player1Spells.add(line.substring(14));
                 }
@@ -261,11 +257,9 @@ public class SpellSelection extends Activity {
                     player2Spells.add(line.substring(14));
                 }
             }
-            fileReader.close();
+            bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
