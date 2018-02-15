@@ -9,8 +9,18 @@
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
     </FrameLayout>
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:padding="32dp"
+        android:src="@drawable/t9alogo"
+        android:scaleType="fitCenter"/>
 
     <ListView
         android:id="@+id/left_drawer"

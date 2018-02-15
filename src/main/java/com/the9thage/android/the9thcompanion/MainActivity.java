@@ -43,8 +43,8 @@ public class MainActivity extends Activity {
 
         mTitle = mDrawerTitle = getTitle();
         mOptionTitles = getResources().getStringArray(R.array.menu_array);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -79,9 +79,6 @@ public class MainActivity extends Activity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         getActionBar().setTitle(R.string.app_name);
-
-        mFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
-        mFrameLayout.setBackground(getDrawable(R.drawable.t9alogo));
 
     }
 

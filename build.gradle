@@ -6,8 +6,8 @@ android {
         applicationId "com.the9thage.android.the9thcompanion"
         minSdkVersion 21
         targetSdkVersion 21
-        versionCode 6
-        versionName "0.14"
+        versionCode 7
+        versionName "0.15"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
