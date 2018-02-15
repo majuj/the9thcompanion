@@ -24,12 +24,13 @@ public class MapPack extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_pack);
         getActionBar().setTitle("Map Pack");
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     public void showMap1(View view) {
         // General Map
         Random r = new Random();
-        int selectObj = r.nextInt(14) +1;
+        int selectObj = r.nextInt(16) +1;
         String viewId = "mapgeneral" + selectObj;
         int resId = getResources().getIdentifier(viewId, "drawable", getPackageName());
         showImage(getDrawable(resId));
@@ -89,7 +90,6 @@ public class MapPack extends Activity  {
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         builder.show();
     }
 }
