@@ -2,6 +2,7 @@ package com.the9thage.android.the9thcompanion;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,17 +26,21 @@ public class VictoryPoints extends Activity  {
     }
 
     public void CalculateResult(View view) {
-        Float totalPts;
-        Float army1Pts;
-        Float army2Pts;
+        Float totalPts = 0.0f;
+        Float army1Pts = 0.0f;
+        Float army2Pts = 0.0f;
         String result = "";
 
-        totalPts = Float.parseFloat(mTotalPointEdit.getText().toString());
-        army1Pts = Float.parseFloat(mArmy1PointEdit.getText().toString());
-        army2Pts = Float.parseFloat(mArmy2PointEdit.getText().toString());
-
-        if ((totalPts.isNaN()) || (army1Pts.isNaN()) || (army2Pts.isNaN()) || (totalPts == 0)){
+        if ( (TextUtils.isEmpty(mTotalPointEdit.getText())) || (TextUtils.isEmpty(mArmy1PointEdit.getText())) || (TextUtils.isEmpty(mArmy2PointEdit.getText()))) {
             result = "Please enter numbers in every field";
+        }
+        else {
+            totalPts = Float.parseFloat(mTotalPointEdit.getText().toString());
+            army1Pts = Float.parseFloat(mArmy1PointEdit.getText().toString());
+            army2Pts = Float.parseFloat(mArmy2PointEdit.getText().toString());
+        }
+        if ((totalPts.isNaN()) || (army1Pts.isNaN()) || (army2Pts.isNaN()) || (totalPts == 0.0f) || (army1Pts > totalPts) || (army2Pts > totalPts)){
+            result = "Please enter valid numbers in every field";
         }
         else {
             Float ratio;
@@ -68,7 +73,8 @@ public class VictoryPoints extends Activity  {
                 result = "5 - 15";
             }else if (ratio > -60) {
                 result = "4 - 16";
-            }else if (ratio > -70) {
+            }else {
+                // if ratio > -70 or less
                 result = "3 - 17";
             }
         }
