@@ -62,6 +62,7 @@
     <string name="text_ref2">Ranged Attack - Modifiers</string>
     <string name="text_ref3">Score to wound</string>
     <string name="text_ref4">Close Combat - Results</string>
+    <string name="text_ref5">Miscast table</string>
     <string name="text_btnDelSpell">Del</string>
     <string name="text_btnAddSpell">Add</string>
     <string name="spellPromptMessage">Enter the name of the spell</string>

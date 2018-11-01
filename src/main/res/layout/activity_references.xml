@@ -49,4 +49,14 @@
         android:onClick="showRef4"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+    <Button
+        android:id="@+id/buttonRef5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="@string/text_ref5"
+        android:gravity="center_vertical"
+        android:onClick="showRef5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
 </LinearLayout>

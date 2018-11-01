@@ -37,11 +37,13 @@ public class References extends Activity  {
         showImage(getDrawable(R.drawable.refcc4));
     }
 
+    public void showRef5(View view) {
+        showImage(getDrawable(R.drawable.refcc5));
+    }
+
     public void showImage(Drawable image) {
         Dialog builder = new Dialog(this, android.R.style.Theme);
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        builder.getWindow().setBackgroundDrawable(
-                new ColorDrawable(android.graphics.Color.WHITE));
         builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
@@ -49,9 +51,9 @@ public class References extends Activity  {
             }
         });
 
-        ImageView imageView = new ImageView(this);
+        TouchImageView imageView = new TouchImageView(this);
         imageView.setImageDrawable(image);
-        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
